@@ -13,7 +13,7 @@ This is a command line application that will help you to manage files and folder
 ### Demo `(Screen shot)`
 
 <p align="center">
-<img src="" alt="demo" width="100%">
+<img src="https://github.com/CrispenGari/fmanager/blob/main/bandicam%202021-11-03%2013-58-25-216.jpg" alt="demo" width="100%">
 </p>
 
 ### Installation
