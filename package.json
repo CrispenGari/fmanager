@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CrispenGari/regex-validator.git"
+    "url": "git+https://github.com/CrispenGari/fmanager.git"
   },
   "dependencies": {
     "@types/inquirer": "^7.3.3",
@@ -32,17 +32,17 @@
     "nodemon": "^2.0.12"
   },
   "bugs": {
-    "url": "https://github.com/CrispenGari/nodejs-backend/issues"
+    "url": "https://github.com/CrispenGari/fmanager/issues"
   },
-  "homepage": "https://github.com/CrispenGari/nodejs-backend#readme",
+  "homepage": "https://github.com/CrispenGari/fmanager#readme",
   "keywords": [
     "node.ts",
     "node.js",
     "typescript",
-    "ts",
-    "nodejs-backend",
+    "fmanager",
     "javascript",
     "js",
-    "express"
+    "commands",
+    "touch"
   ]
 }

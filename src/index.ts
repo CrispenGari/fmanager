@@ -1,5 +1,4 @@
 #!/usr/bin/env ts-node
-
 import process from "process";
 import {
   createFile,
