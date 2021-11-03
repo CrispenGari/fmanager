@@ -1,0 +1,48 @@
+{
+  "name": "fmanager",
+  "version": "1.0.0",
+  "description": "cmd commands",
+  "main": "src index.ts",
+  "license": "MIT",
+  "bin": "src/index.ts",
+  "author": "CrispenGari",
+  "scripts": {
+    "watch": "tsc -w",
+    "start": "ts-node src/index.ts",
+    "dev": "nodemon dist/index.ts",
+    "start:fast": "ts-node-dev --respawn src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CrispenGari/regex-validator.git"
+  },
+  "dependencies": {
+    "@types/inquirer": "^7.3.3",
+    "@types/node": "^16.7.0",
+    "@types/npm": "^7.19.0",
+    "chalk": "^4.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "inquirer": "^8.1.2",
+    "readline": "^1.3.0",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "bugs": {
+    "url": "https://github.com/CrispenGari/nodejs-backend/issues"
+  },
+  "homepage": "https://github.com/CrispenGari/nodejs-backend#readme",
+  "keywords": [
+    "node.ts",
+    "node.js",
+    "typescript",
+    "ts",
+    "nodejs-backend",
+    "javascript",
+    "js",
+    "express"
+  ]
+}
