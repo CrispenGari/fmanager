@@ -1,6 +1,6 @@
 {
   "name": "fmanager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "cmd commands",
   "main": "src index.ts",
   "license": "MIT",
@@ -43,6 +43,8 @@
     "javascript",
     "js",
     "commands",
-    "touch"
+    "touch",
+    "rm",
+    "rename"
   ]
 }
