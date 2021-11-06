@@ -10,6 +10,8 @@ import {
   createFolder,
   renameFolder,
   renameFile,
+  listFilesAndFolders,
+  openFile,
 } from "./utils";
 
 const cwd = process.cwd();
@@ -24,8 +26,9 @@ const args: string[] = process.argv.slice(2);
   } else if (args.length === 3) {
     cmd = args[0];
     (name = args[1]), (name2 = args[2]);
+  } else if (args.length === 1) {
+    [cmd] = args;
   }
-
   if (commands.indexOf(cmd.trim().toLocaleLowerCase()) === -1) return;
   const command: string = cmd.trim().toLocaleLowerCase();
   switch (command) {
@@ -46,6 +49,13 @@ const args: string[] = process.argv.slice(2);
       break;
     case commandsObject.renameFolder:
       await renameFolder(name.trim(), name2.trim(), cwd);
+      break;
+    case commandsObject.openFile:
+      await openFile(name.trim(), cwd);
+      break;
+    case commandsObject.listFoldersFile:
+    case commandsObject.listFilesFolders:
+      await listFilesAndFolders(cwd);
       break;
     default:
       break;

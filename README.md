@@ -104,6 +104,64 @@ fmanager rename-file test.js test1.ts
 
 This will renames a file called `test.js` to `test1.ts` in the current directory.
 
+7. Listing files and folders
+
+To list files and folders in the current working directory we have two commands which are:
+
+```shell
+fmanager ls
+
+# or
+
+fmanager dir
+```
+
+8. Opening a file
+
+To open a file with a default program you need to run the following command:
+
+```shell
+fmanager open <filename>
+
+# example
+fmanager open index.ts
+```
+
+The above command will open the file `index.ts` with the default program.
+
+> make sure that the file exists in the current working directory.
+
 ### Facing problems
 
 If you are facing any problem using this tool feel free to create an issue so that we can improve our tool.
+
+### Still working on
+
+In the versions that will come we are going to allow the creation of `recursive` files and folders for example creating files and folders using the following command:
+
+```shell
+# folders
+fmanager touch-file test/unit/src
+```
+
+- this will create a nested folders like:
+
+```
+- test
+ - unit
+    - src
+```
+
+```shell
+# files
+fmanager touch-file test/unit/src/user.test.js
+```
+
+- this will create a nested folder and a file at the end like:
+
+```
+- test
+ - unit
+    - src
+       - user.test.js
+```

@@ -1,13 +1,24 @@
-import { writeFile, mkdir, rmdir, rm, rename } from "fs/promises";
+import {
+  writeFile,
+  mkdir,
+  rmdir,
+  rm,
+  rename,
+  readdir,
+  lstat,
+} from "fs/promises";
+import open from "open";
+("open");
 import path from "path";
 import chalk from "chalk";
-
 // creating a file
 export const createFile = async (
   filename: string,
   cwd: string
 ): Promise<void> => {
-  await writeFile(path.resolve(path.join(cwd, filename)), "");
+  await writeFile(path.resolve(path.join(cwd, filename)), "", {
+    encoding: "utf-8",
+  });
   console.log(chalk.green(`created file: `), chalk.blue(`${filename}`));
 };
 
@@ -16,7 +27,9 @@ export const createFolder = async (
   foldername: string,
   cwd: string
 ): Promise<void> => {
-  await mkdir(path.resolve(path.join(cwd, foldername)));
+  await mkdir(path.resolve(path.join(cwd, foldername)), {
+    recursive: true,
+  });
   console.log(chalk.green(`created folder: `), chalk.blue(`${foldername}`));
 };
 
@@ -64,8 +77,26 @@ export const renameFile = async (
   await console.log(chalk.green(`renamed file: `), chalk.cyan(`${filename}`));
 };
 
-// available commands
+export const listFilesAndFolders = async (cwd: string): Promise<void> => {
+  const _result = await readdir(cwd);
+  _result.forEach(async (res, _) => {
+    const stats = await lstat(path.resolve(path.join(cwd, res)));
+    const isDirectory: boolean = stats.isDirectory();
+    console.log(
+      ` - ${res}`,
+      isDirectory === false ? chalk.blue(`(file)`) : chalk.red(`(folder)`)
+    );
+  });
+};
 
+export const openFile = async (
+  filename: string,
+  cwd: string
+): Promise<void> => {
+  await open(path.resolve(path.join(cwd, filename)));
+};
+
+// available commands
 export const commands: string[] = [
   "touch-file",
   "touch-folder",
@@ -73,6 +104,9 @@ export const commands: string[] = [
   "rename-file",
   "rm-folder",
   "rename-folder",
+  "ls",
+  "dir",
+  "open",
 ].map((e) => e.toLocaleLowerCase());
 
 export const commandsObject = {
@@ -82,4 +116,7 @@ export const commandsObject = {
   renameFile: "rename-file",
   removeFolder: "rm-folder",
   renameFolder: "rename-folder",
+  listFoldersFile: "ls",
+  listFilesFolders: "dir",
+  openFile: "open",
 };
