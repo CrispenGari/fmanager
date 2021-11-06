@@ -1,6 +1,6 @@
 {
   "name": "fmanager",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "cmd commands",
   "main": "src index.ts",
   "license": "MIT",
