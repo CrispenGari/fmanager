@@ -182,6 +182,12 @@ fmanager copy-file <filepath to be moved> <destination path>
 #             (can be absolute)        (can be relative)
 ```
 
+Example:
+
+```shell
+fmanager copy-file  C:\Users\user\OneDrive\Documents\npm\index.js C:\Users\user\OneDrive\Documents\backend\src
+```
+
 11. help
 
 To get the docs or help from the `fmanager` you run the following command:
@@ -190,12 +196,6 @@ To get the docs or help from the `fmanager` you run the following command:
 fmanager -h
 # or
 fmanager --help
-```
-
-Example:
-
-```shell
-fmanager copy-file  C:\Users\user\OneDrive\Documents\npm\index.js C:\Users\user\OneDrive\Documents\backend\src
 ```
 
 ### Facing problems
