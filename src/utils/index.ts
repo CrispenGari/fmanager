@@ -175,31 +175,94 @@ export const copyFiles = async (
   );
 };
 
-// available commands
-export const commands: string[] = [
-  "touch-file",
-  "touch-folder",
-  "rm-file",
-  "rename-file",
-  "rm-folder",
-  "rename-folder",
-  "ls",
-  "dir",
-  "open",
-  "move",
-  "copy-file",
-].map((e) => e.toLocaleLowerCase());
+// version
 
+export const displayVersion = async (pkg: any): Promise<void> => {
+  console.log();
+  console.log(chalk.green("fmanager: "), chalk.cyan(`v${pkg.version}`));
+};
+
+// command not found
+
+export const commandNotFound = async (command: string): Promise<void> => {
+  console.log();
+  console.log(chalk.red("unknown command:"), chalk.yellow(command));
+  console.log(
+    chalk.blue("try:"),
+    chalk.yellow("fmanager -h"),
+    chalk.blue("or"),
+    chalk.yellow("fmanager --help"),
+    chalk.blue("for"),
+    chalk.green("help")
+  );
+};
+
+interface Command {
+  names: string[];
+  description: string;
+}
+
+const commands: Command[] = [
+  {
+    names: ["touch-file"],
+    description: "creating a file in a current directory.",
+  },
+  {
+    names: ["touch-folder"],
+    description: "creating a folder in a current directory.",
+  },
+  {
+    names: ["rm-file"],
+    description: "removes a file in the current directory.",
+  },
+  {
+    names: ["rm-folder"],
+    description: "removes a folder in the current directory.",
+  },
+  { names: ["rename-folder"], description: "renames a folder to a new name." },
+  { names: ["rename-file"], description: "renames a file to a new name." },
+  {
+    names: ["ls", "dir"],
+    description: "list files and folders in the current directory.",
+  },
+  {
+    names: ["open"],
+    description: "open the file, folder with the default program.",
+  },
+  { names: ["copy-file"], description: "copies file to a new path." },
+  { names: ["-v", "--version"], description: "displays the fmanager version." },
+  { names: ["-h", "--help"], description: "displays the help commands." },
+];
 export const commandsObject = {
-  touchFile: "touch-file",
-  touchFolder: "touch-folder",
-  removeFile: "rm-file",
-  renameFile: "rename-file",
-  removeFolder: "rm-folder",
-  renameFolder: "rename-folder",
-  listFoldersFile: "ls",
-  listFilesFolders: "dir",
-  openFile: "open",
-  moveFileFolder: "move",
-  copyFil: "copy-file",
+  touchFile: ["touch-file"],
+  touchFolder: ["touch-folder"],
+  removeFile: ["rm-file"],
+  renameFile: ["rename-file"],
+  removeFolder: ["rm-folder"],
+  renameFolder: ["rename-folder"],
+  listFoldersFile: ["ls", "dir"],
+  openFile: ["open"],
+  moveFileFolder: ["move"],
+  copyFil: ["copy-file"],
+  version: ["-v", "--version"],
+  help: ["-h", "--help"],
+};
+
+// help commands
+
+export const displayHelp = async (): Promise<void> => {
+  console.log();
+  console.log(chalk.green("------- HELP "));
+  console.log();
+  await commands.forEach((command: Command) => {
+    console.log(
+      chalk.cyan(" command(s)  >"),
+      command.names.join(chalk.blue(" or "))
+    );
+    console.log(
+      chalk.greenBright(" description >"),
+      chalk.yellow(command.description)
+    );
+    console.log();
+  });
 };

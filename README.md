@@ -20,6 +20,8 @@ This is a command line application that will help you to manage files and folder
 
 In order for you to use this package you need to install it globally as follows:
 
+> This package requires [`Node.js`](https://nodejs.org/en/download/) to be installed in your computer. And if you want to install it using `yarn` package manager you have to make sure that `yarn` is installed on your computer.
+
 1. using `yarn`
 
 ```shell
@@ -37,6 +39,24 @@ npm install -g fmanager
 This is a command line application that is used to manipulate folders and files using the command line. You can run all the available commands which are listed bellow:
 
 ### Available commands
+
+0. version
+
+To check if the `fmanager` has been installed on your computer you should run the following command:
+
+```shell
+fmanager -v
+# or
+fmanager --version
+```
+
+> Note that this command will give you the currently installed version of the `fmanager` package. You can get a specific version by installing it globally as follows:
+
+```shell
+npm i -g fmanager@<version>
+# example
+npm i -g fmanager@1.0.0
+```
 
 1. creating a file
 
@@ -160,6 +180,16 @@ To copy file is similar to the moving of a file or a folder except that this com
 ```shell
 fmanager copy-file <filepath to be moved> <destination path>
 #             (can be absolute)        (can be relative)
+```
+
+11. help
+
+To get the docs or help from the `fmanager` you run the following command:
+
+```shell
+fmanager -h
+# or
+fmanager --help
 ```
 
 Example:
