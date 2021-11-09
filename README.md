@@ -131,6 +131,43 @@ The above command will open the file `index.ts` with the default program.
 
 > make sure that the file exists in the current working directory.
 
+9. Moving file or folders
+
+   Folders and files can be moved around teh file system by the
+   fmanager using the following command:
+
+```shell
+fmanager move <filepath to be moved> <destination path>
+#             (can be absolute)        (can be relative)
+```
+
+moving files/folders using relative path example:
+
+```shell
+fmanager move package.json .
+```
+
+moving files/folders using absolute path
+
+```shell
+fmanager move  C:\Users\user\OneDrive\Documents\npm\index.js C:\Users\user\OneDrive\Documents\backend\src
+```
+
+10. copying files
+
+To copy file is similar to the moving of a file or a folder except that this command onl copy files not folders using the following command:
+
+```shell
+fmanager copy-file <filepath to be moved> <destination path>
+#             (can be absolute)        (can be relative)
+```
+
+Example:
+
+```shell
+fmanager copy-file  C:\Users\user\OneDrive\Documents\npm\index.js C:\Users\user\OneDrive\Documents\backend\src
+```
+
 ### Facing problems
 
 If you are facing any problem using this tool feel free to create an issue so that we can improve our tool.

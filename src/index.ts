@@ -1,6 +1,5 @@
 #!/usr/bin/env ts-node
 import process from "process";
-
 import {
   createFile,
   commands,
@@ -12,6 +11,8 @@ import {
   renameFile,
   listFilesAndFolders,
   openFile,
+  moveFileFolder,
+  copyFiles,
 } from "./utils";
 
 const cwd = process.cwd();
@@ -56,6 +57,12 @@ const args: string[] = process.argv.slice(2);
     case commandsObject.listFoldersFile:
     case commandsObject.listFilesFolders:
       await listFilesAndFolders(cwd);
+      break;
+    case commandsObject.moveFileFolder:
+      await moveFileFolder(name.trim(), name2.trim(), cwd);
+      break;
+    case commandsObject.copyFil:
+      await copyFiles(name.trim(), name2.trim(), cwd);
       break;
     default:
       break;
