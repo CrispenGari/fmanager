@@ -10,12 +10,6 @@ This is a command line application that will help you to manage files and folder
 6. rename a folder
 7. etc
 
-### Demo `(Screen shot)`
-
-<p align="center">
-<img src="https://github.com/CrispenGari/fmanager/blob/main/bandicam%202021-11-03%2013-58-25-216.jpg" alt="demo" width="100%">
-</p>
-
 ### Installation
 
 In order for you to use this package you need to install it globally as follows:
@@ -197,6 +191,25 @@ fmanager -h
 # or
 fmanager --help
 ```
+
+### Installing specific versions
+
+Specific versions of `fmanager` can be installed globally by running the following command.
+
+```shell
+npm i -g fmanager@<version>
+
+# example
+npm i -g fmanager@2.0.0
+```
+
+The command:
+
+```shell
+npm i -g fmanager
+```
+
+Will install the `latest` version of `fmanager`.
 
 ### Facing problems
 

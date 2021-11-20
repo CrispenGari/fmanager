@@ -6,6 +6,7 @@ import {
   rename,
   readdir,
   lstat,
+  readFile,
 } from "fs/promises";
 import { copySync } from "fs-extra";
 import open from "open";
@@ -14,11 +15,18 @@ import { move } from "@crispengari/fsmove";
 import path from "path";
 import chalk from "chalk";
 import { isAbsolute } from "path";
+
 // creating a file
 export const createFile = async (
   filename: string,
   cwd: string
 ): Promise<void> => {
+  console.log();
+  const t: string = await readFile(
+    path.resolve(path.join(__dirname, "files/fmanager.txt")),
+    { encoding: "utf8" }
+  );
+  console.log(chalk.green(t));
   console.log();
   await writeFile(path.resolve(path.join(cwd, filename)), "", {
     encoding: "utf-8",
@@ -32,6 +40,12 @@ export const createFolder = async (
   cwd: string
 ): Promise<void> => {
   console.log();
+  const t: string = await readFile(
+    path.resolve(path.join(__dirname, "files/fmanager.txt")),
+    { encoding: "utf8" }
+  );
+  console.log(chalk.green(t));
+  console.log();
   await mkdir(path.resolve(path.join(cwd, foldername)), {
     recursive: true,
   });
@@ -44,6 +58,12 @@ export const deleteFolder = async (
   cwd: string
 ): Promise<void> => {
   console.log();
+  const t: string = await readFile(
+    path.resolve(path.join(__dirname, "files/fmanager.txt")),
+    { encoding: "utf8" }
+  );
+  console.log(chalk.green(t));
+  console.log();
   await rmdir(path.resolve(path.join(cwd, foldername)));
   console.log(chalk.green(`deleted folder: `), chalk.red(`${foldername}`));
 };
@@ -53,6 +73,12 @@ export const deleteFile = async (
   filename: string,
   cwd: string
 ): Promise<void> => {
+  console.log();
+  const t: string = await readFile(
+    path.resolve(path.join(__dirname, "files/fmanager.txt")),
+    { encoding: "utf8" }
+  );
+  console.log(chalk.green(t));
   console.log();
   await rm(path.resolve(path.join(cwd, filename)));
   console.log(chalk.green(`deleted file: `), chalk.red(`${filename}`));
@@ -65,6 +91,12 @@ export const renameFolder = async (
   newFolderName: string,
   cwd: string
 ): Promise<void> => {
+  console.log();
+  const t: string = await readFile(
+    path.resolve(path.join(__dirname, "files/fmanager.txt")),
+    { encoding: "utf8" }
+  );
+  console.log(chalk.green(t));
   console.log();
   await rename(
     path.resolve(path.join(cwd, foldername)),
@@ -86,6 +118,12 @@ export const renameFile = async (
   cwd: string
 ): Promise<void> => {
   console.log();
+  const t: string = await readFile(
+    path.resolve(path.join(__dirname, "files/fmanager.txt")),
+    { encoding: "utf8" }
+  );
+  console.log(chalk.green(t));
+  console.log();
   await rename(
     path.resolve(path.join(cwd, filename)),
     path.resolve(path.join(cwd, newFileName))
@@ -100,6 +138,12 @@ export const renameFile = async (
 
 // listing files
 export const listFilesAndFolders = async (cwd: string): Promise<void> => {
+  console.log();
+  const t: string = await readFile(
+    path.resolve(path.join(__dirname, "files/fmanager.txt")),
+    { encoding: "utf8" }
+  );
+  console.log(chalk.green(t));
   console.log();
   const _result = await readdir(cwd);
   _result.forEach(async (res, _) => {
@@ -127,6 +171,12 @@ export const moveFileFolder = async (
   dest: string,
   cwd: string
 ): Promise<void> => {
+  console.log();
+  const t: string = await readFile(
+    path.resolve(path.join(__dirname, "files/fmanager.txt")),
+    { encoding: "utf8" }
+  );
+  console.log(chalk.green(t));
   console.log();
   const srcPath: string = isAbsolute(src)
     ? String(src).replace("\\", "/")
@@ -164,6 +214,12 @@ export const copyFiles = async (
   const destPath: string = isAbsolute(dest)
     ? String(dest).replace("\\", "/").replace(basename, "")
     : path.resolve(path.join(cwd, dest)).replace(basename, "");
+  const t: string = await readFile(
+    path.resolve(path.join(__dirname, "files/fmanager.txt")),
+    { encoding: "utf8" }
+  );
+  console.log(chalk.green(t));
+  console.log();
 
   await copySync(srcPath, path.resolve(path.join(destPath, basename)));
   console.log(
@@ -178,6 +234,11 @@ export const copyFiles = async (
 // version
 
 export const displayVersion = async (pkg: any): Promise<void> => {
+  const t: string = await readFile(
+    path.resolve(path.join(__dirname, "files/fmanager.txt")),
+    { encoding: "utf8" }
+  );
+  console.log(chalk.green(t));
   console.log();
   console.log(chalk.green("fmanager: "), chalk.cyan(`v${pkg.version}`));
 };
@@ -185,6 +246,12 @@ export const displayVersion = async (pkg: any): Promise<void> => {
 // command not found
 
 export const commandNotFound = async (command: string): Promise<void> => {
+  console.log();
+  const t: string = await readFile(
+    path.resolve(path.join(__dirname, "files/fmanager.txt")),
+    { encoding: "utf8" }
+  );
+  console.log(chalk.green(t));
   console.log();
   console.log(chalk.red("unknown command:"), chalk.yellow(command));
   console.log(
@@ -252,7 +319,24 @@ export const commandsObject = {
 
 export const displayHelp = async (): Promise<void> => {
   console.log();
-  console.log(chalk.green("------- HELP "));
+  const t: string = await readFile(
+    path.resolve(path.join(__dirname, "files/help.txt")),
+    { encoding: "utf8" }
+  );
+  await console.log(chalk.green(t));
+  console.log();
+  console.log(
+    chalk.gray("  run: "),
+    chalk.green("fmanager"),
+    chalk.cyan("<command>")
+  );
+
+  console.log(
+    chalk.gray("  example: "),
+    chalk.green("fmanager"),
+    chalk.cyan("ls")
+  );
+
   console.log();
   await commands.forEach((command: Command) => {
     console.log(
@@ -261,7 +345,7 @@ export const displayHelp = async (): Promise<void> => {
     );
     console.log(
       chalk.greenBright(" description >"),
-      chalk.yellow(command.description)
+      chalk.gray(command.description)
     );
     console.log();
   });
